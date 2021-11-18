@@ -3,7 +3,8 @@
 Point::Point(float x, float y) : posx(x), posy(y)
 {
 	pt.setFillColor(sf::Color(0, 0, 0));
-	pt.setPosition(posx, posy);
+	pt.setOrigin(sf::Vector2f(radius, radius));
+	pt.setPosition(sf::Vector2f(posx, posy));
 }
 
 sf::Vector2f Point::getPosition()

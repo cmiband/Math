@@ -15,7 +15,7 @@ int Application::Run()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Math");
 	window.setFramerateLimit(30);
 
-	Point point1(3*BOX_LENGHT, 4*BOX_LENGHT);
+	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
 
 	while (window.isOpen()) {
 		sf::Event event;
