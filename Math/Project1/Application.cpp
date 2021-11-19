@@ -11,11 +11,14 @@ Application::Application()
 
 int Application::Run()
 {
-	cout << coordsImage.getSize().x << " " << coordsImage.getSize().y;
+	cout << coordsImage.getSize().x << " " << coordsImage.getSize().y << endl;
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Math");
 	window.setFramerateLimit(30);
 
 	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
+	DirectLine line1(-5, 2, 0);
+	cout << coordinates::toCoordinate(-5, true) * CENT_LENGHT << endl;
+	cout << coordinates::toCoordinate(1, false) * CENT_LENGHT;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -30,6 +33,7 @@ int Application::Run()
 
 		window.draw(coordsRect);
 		window.draw(point1.getShape());
+		window.draw(line1.getShape());
 
 		window.display();
 	}
