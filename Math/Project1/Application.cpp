@@ -16,9 +16,12 @@ int Application::Run()
 	window.setFramerateLimit(30);
 
 	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
-	DirectLine line1(-5, 2, 0);
-	cout << coordinates::toCoordinate(-5, true) * CENT_LENGHT << endl;
-	cout << coordinates::toCoordinate(1, false) * CENT_LENGHT;
+
+	sf::Vertex line[2];
+	line[0].position = sf::Vector2f(0, 400);
+	line[0].color = sf::Color::Black;
+	line[1].position = sf::Vector2f(400, 0);
+	line[1].color = sf::Color::Black;
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -33,7 +36,7 @@ int Application::Run()
 
 		window.draw(coordsRect);
 		window.draw(point1.getShape());
-		window.draw(line1.getShape());
+		window.draw(line,2,sf::Lines);
 
 		window.display();
 	}

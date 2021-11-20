@@ -10,14 +10,13 @@ class DirectLine
 {
 private:
 	float startingPointx;
-	float aRatio, bRatio;
-	float xAxisAngle;     // TODO : tangens alfa = aRatio
+	float aRatio, bRatio;  
 
-	sf::RectangleShape line;
+	sf::Vertex line[2];
 
 public:
 	DirectLine(float x, float a, float b);
-	sf::RectangleShape getShape();
-
+	sf::Vertex start();
+	sf::Vertex end();
 };
 

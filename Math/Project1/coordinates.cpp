@@ -23,3 +23,19 @@ float coordinates::linearFunction(float x, float a, float b)
 {
 	return a * x + b;
 }
+
+float coordinates::addTillMatchEdge(float &val, float end)
+{
+	if (val < end)
+		val++;
+	return val;
+}
+
+float coordinates::pythagorasSide(float hypotenuse, float sideB)
+{
+	return sqrt(pow(hypotenuse, 2) - pow(sideB, 2));
+}
+
+float coordinates::pythagorasHyp(float sideA, float sideB) {
+	return sqrt(pow(sideA, 2) + pow(sideB, 2));
+}
