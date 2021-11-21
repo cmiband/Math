@@ -18,6 +18,7 @@ private:
 
 	const float BOX_LENGHT = 20.0f;
 	const float CENT_LENGHT = coordinates::CENT_LENGHT;
+	void DrawLine(DirectLine *line, sf::RenderWindow* window);
 public:
 	Application();
 	~Application() {};

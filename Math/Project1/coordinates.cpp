@@ -24,18 +24,10 @@ float coordinates::linearFunction(float x, float a, float b)
 	return a * x + b;
 }
 
-float coordinates::addTillMatchEdge(float &val, float end)
+float coordinates::reverseLinearFunction(float y, float a, float b)
 {
-	if (val < end)
-		val++;
-	return val;
+	return (y - b) / a;
 }
 
-float coordinates::pythagorasSide(float hypotenuse, float sideB)
-{
-	return sqrt(pow(hypotenuse, 2) - pow(sideB, 2));
-}
 
-float coordinates::pythagorasHyp(float sideA, float sideB) {
-	return sqrt(pow(sideA, 2) + pow(sideB, 2));
-}
+
