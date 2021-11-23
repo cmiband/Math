@@ -3,10 +3,11 @@
 #include "coordinates.h"
 #include <math.h>
 #include <iostream>
+#include "GeoShape.h"
 
 #define PI 3.14159265
 
-class DirectLine
+class DirectLine : public GeoShape
 {
 private:
 	float startingPointx;
@@ -16,7 +17,6 @@ private:
 
 public:
 	DirectLine(float x, float a, float b);
-	sf::Vertex start();
-	sf::Vertex end();
+	virtual void drawOnScreen(sf::RenderWindow* w);
 };
 

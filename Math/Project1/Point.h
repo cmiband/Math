@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "coordinates.h"
+#include "GeoShape.h"
 
-class Point
+class Point : public GeoShape
 {
 private:
 	float posx, posy;
@@ -16,5 +17,6 @@ public:
 	sf::Vector2f getPosition();
 	void setPosition(float x, float y);
 	sf::CircleShape getShape();
+	virtual void drawOnScreen(sf::RenderWindow* w);
 };
 

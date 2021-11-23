@@ -2,7 +2,7 @@
 
 Point::Point(float x, float y) : posx(x), posy(y)
 {
-	pt.setFillColor(sf::Color(0, 0, 0));
+	pt.setFillColor(color);
 	pt.setOrigin(sf::Vector2f(radius, radius));
 	pt.setPosition(sf::Vector2f(posx, posy));
 }
@@ -21,6 +21,11 @@ void Point::setPosition(float x, float y)
 sf::CircleShape Point::getShape()
 {
 	return pt;
+}
+
+void Point::drawOnScreen(sf::RenderWindow* w)
+{
+	w->draw(pt);
 }
 
 

@@ -9,7 +9,7 @@ DirectLine::DirectLine(float x, float a, float b) : startingPointx(x), aRatio(a)
 		coordX = coordinates::toCoordinate(coordinates::reverseLinearFunction(-5.0f, aRatio, bRatio), true) * coordinates::CENT_LENGHT;
 	}
 	line[0].position = sf::Vector2f(coordX, yStart);
-	line[0].color = sf::Color::Black;
+	line[0].color = color;
 
 	float yEnd = coordinates::toCoordinate(coordinates::linearFunction(5.0f, aRatio, bRatio), false)*coordinates::CENT_LENGHT;
 	float xEnd = coordinates::toCoordinate(5.0f, true) * coordinates::CENT_LENGHT;
@@ -19,15 +19,9 @@ DirectLine::DirectLine(float x, float a, float b) : startingPointx(x), aRatio(a)
 	}
 
 	line[1].position = sf::Vector2f(xEnd, yEnd);
-	line[1].color = sf::Color::Black;
+	line[1].color = color;
 }
 
-sf::Vertex DirectLine::start()
-{
-	return line[0];
-}
-
-sf::Vertex DirectLine::end()
-{
-	return line[1];
+void DirectLine::drawOnScreen(sf::RenderWindow* w) {
+	w->draw(line, 2, sf::Lines);
 }

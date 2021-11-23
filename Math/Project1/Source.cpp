@@ -3,10 +3,9 @@
 
 int main() {
 
-	Application app;
-	Application* ptr = &app;
+	Application *app = new Application;
 
-	ptr->Run();
+	app->Run();
 
 	return 0;
 }

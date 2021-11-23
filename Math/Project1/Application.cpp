@@ -1,15 +1,5 @@
 #include "Application.h"
 
-void Application::DrawLine(DirectLine *line, sf::RenderWindow* window)
-{
-	sf::Vertex temp[2] = {
-		line->start(),
-		line->end()
-	};
-	
-	window->draw(temp, 2, sf::Lines);
-}
-
 Application::Application()
 {
 	coordsImage.loadFromFile("coords.jpg");
@@ -39,8 +29,8 @@ int Application::Run()
 		window.clear(bgColor);
 
 		window.draw(coordsRect);
-		window.draw(point1.getShape());
-		DrawLine(&line, &window);
+		point1.drawOnScreen(&window);
+		line.drawOnScreen(&window);
 
 		window.display();
 	}
