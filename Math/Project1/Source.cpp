@@ -3,7 +3,11 @@
 
 int main() {
 
-	Application *app = new Application;
+	sf::Font font;
+	if (!font.loadFromFile("BebasNeue-Regular.ttf"))
+		return EXIT_FAILURE;
+
+	Application *app = new Application(font);
 
 	app->Run();
 

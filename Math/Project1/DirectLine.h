@@ -19,4 +19,3 @@ public:
 	DirectLine(float x, float a, float b);
 	virtual void drawOnScreen(sf::RenderWindow* w);
 };
-

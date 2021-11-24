@@ -1,7 +1,8 @@
 #include "Application.h"
 
-Application::Application()
+Application::Application(sf::Font f)
 {
+	font = f;
 	coordsImage.loadFromFile("coords.jpg");
 	coordsTexture.loadFromImage(coordsImage);
 
@@ -15,7 +16,8 @@ int Application::Run()
 	window.setFramerateLimit(30);
 
 	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
-	DirectLine line(-5.0f, 2.0f, 1.0f);
+	DirectLine line(-5.0f, -1.0f, 1.0f);
+	Circle crc(3.0f, 1.0f, 1.0f);
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -31,6 +33,7 @@ int Application::Run()
 		window.draw(coordsRect);
 		point1.drawOnScreen(&window);
 		line.drawOnScreen(&window);
+		crc.drawOnScreen(&window);
 
 		window.display();
 	}
