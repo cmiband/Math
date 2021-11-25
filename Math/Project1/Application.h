@@ -5,6 +5,7 @@
 #include "coordinates.h"
 #include "DirectLine.h"
 #include "Circle.h"
+#include "InputField.h"
 #include <iostream>
 
 using namespace std;

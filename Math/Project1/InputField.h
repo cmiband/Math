@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "GeoShape.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -12,6 +13,7 @@ private:
 
 	string value;
 	bool focused;
+	int maximumAmountOfLetters;
 
 	sf::Font font;
 	sf::Text text;
@@ -22,6 +24,8 @@ public:
 	~InputField() {};
 
 	virtual void drawOnScreen(sf::RenderWindow* w);
-	void checkForFocus(sf::RenderWindow& w);
+	void update(sf::Event &ev, sf::RenderWindow &w);
+	void reset();
+	void setPos(sf::Vector2f p);
 };
 

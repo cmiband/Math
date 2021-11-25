@@ -18,6 +18,7 @@ int Application::Run()
 	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
 	DirectLine line(-5.0f, -1.0f, 1.0f);
 	Circle crc(3.0f, 1.0f, 1.0f);
+	InputField input1(font, sf::Vector2f(500.0f, 50.0f));
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -34,6 +35,9 @@ int Application::Run()
 		point1.drawOnScreen(&window);
 		line.drawOnScreen(&window);
 		crc.drawOnScreen(&window);
+
+		input1.update(event, window);
+		input1.drawOnScreen(&window);
 
 		window.display();
 	}
