@@ -28,25 +28,23 @@ void InputField::update(sf::Event &ev, sf::RenderWindow &w)
 	sf::Vector2i mpos = mouse.getPosition(w);
 	sf::Vector2f mposf = sf::Vector2f((float)mpos.x, (float)mpos.y);
 	bool cont = field.getGlobalBounds().contains(mposf);
-	(cont) ? focused = true : focused = false;
+	if (cont && sf::Mouse::isButtonPressed(sf::Mouse::Left)) focused = true;
+	if (!cont && sf::Mouse::isButtonPressed(sf::Mouse::Left)) focused = false;
 
-	int typedOnce = 1;
 	if (focused) {
 		if (ev.type == sf::Event::TextEntered && !sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
 			if (ev.text.unicode < 128) {
-				if (value.size() < maximumAmountOfLetters && typedOnce > 0) {
+				if (value.size() < maximumAmountOfLetters) {
 					value += static_cast<char>(ev.text.unicode);
 					text.setString(value);
 				}
 			}
-			typedOnce--;
 		}
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
 			if (value.size() > 0) {
-				value.erase(value.end() - 1);
+				value.erase(value.end()-1);
 				text.setString(value);
 			}
-			typedOnce--;
 		}
 	}
 }
@@ -61,4 +59,9 @@ void InputField::setPos(sf::Vector2f p)
 {
 	field.setPosition(p);
 	text.setPosition(p);
+}
+
+string InputField::getValue()
+{
+	return value;
 }

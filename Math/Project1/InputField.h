@@ -27,5 +27,7 @@ public:
 	void update(sf::Event &ev, sf::RenderWindow &w);
 	void reset();
 	void setPos(sf::Vector2f p);
+
+	string getValue();
 };
 
