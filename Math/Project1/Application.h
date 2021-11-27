@@ -6,6 +6,7 @@
 #include "DirectLine.h"
 #include "Circle.h"
 #include "InputField.h"
+#include "Button.h"
 #include <iostream>
 
 using namespace std;
@@ -13,6 +14,12 @@ using namespace std;
 class Application
 {
 private:
+	enum class figures {
+		POINT,
+		LINE,
+		CIRCLE
+	};
+
 	const sf::Color bgColor = sf::Color(192, 192, 192);
 	sf::Image coordsImage;
 	sf::Texture coordsTexture;

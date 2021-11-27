@@ -1,26 +1,31 @@
 #include "InputField.h"
 
-InputField::InputField(sf::Font f, sf::Vector2f p)
+InputField::InputField(sf::Font f, sf::Vector2f p, float w, float h, string l) : font(f), width(w), height(h), labelVal(l)
 {
 	focused = false;
-	font = f;
 	value = "";
 
-	maximumAmountOfLetters = 5;
-	field = sf::RectangleShape(sf::Vector2f(75.0f, 30.0f));
+	maximumAmountOfLetters = 4;
+	field = sf::RectangleShape(sf::Vector2f(width, height));
 	field.setFillColor(sf::Color::White);
 	field.setPosition(p);
 
 	text.setFont(font);
-	text.setPosition(p);
+	text.setPosition(sf::Vector2f(p.x+width/7,p.y));
 	text.setString(value);
 	text.setFillColor(color);
+
+	label.setFont(font);
+	label.setPosition(sf::Vector2f(p.x - 60.0f, p.y));
+	label.setString(labelVal);
+	label.setFillColor(color);
 }
 
 void InputField::drawOnScreen(sf::RenderWindow* w)
 {
 	w->draw(field);
 	w->draw(text);
+	w->draw(label);
 }
 
 void InputField::update(sf::Event &ev, sf::RenderWindow &w)

@@ -12,13 +12,15 @@ Application::Application(sf::Font f)
 
 int Application::Run()
 {
+	figures fig = figures::POINT;
+
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Math");
 	window.setFramerateLimit(30);
 
-	Point point1(coordinates::toCoordinate(1.5,true)*CENT_LENGHT,coordinates::toCoordinate(1,false)*CENT_LENGHT);
-	DirectLine line(-5.0f, -1.0f, 1.0f);
-	Circle crc(3.0f, 1.0f, 1.0f);
-	InputField input1(font, sf::Vector2f(500.0f, 50.0f));
+	Button choosePoint("Point", sf::Vector2f(10.0f, 440.0f), font, 80.0f, 40.0f);
+	Button chooseCircle("Circle", sf::Vector2f(170.0f, 440.0f), font, 80.0f, 40.0f);
+	Button chooseLine("Line", sf::Vector2f(310.0f, 440.0f), font, 80.0f, 40.0f);
+	Button submit("Submit", sf::Vector2f(550.0f, 400.0f), font, 100.0f, 40.0f);
 
 	while (window.isOpen()) {
 		sf::Event event;
@@ -32,12 +34,8 @@ int Application::Run()
 		window.clear(bgColor);
 
 		window.draw(coordsRect);
-		point1.drawOnScreen(&window);
-		line.drawOnScreen(&window);
-		crc.drawOnScreen(&window);
 
-		input1.update(event, window);
-		input1.drawOnScreen(&window);
+		choosePoint.drawOnScreen(&window); chooseCircle.drawOnScreen(&window); chooseLine.drawOnScreen(&window); submit.drawOnScreen(&window);
 
 		window.display();
 	}
