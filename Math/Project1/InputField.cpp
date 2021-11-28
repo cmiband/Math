@@ -66,7 +66,7 @@ void InputField::setPos(sf::Vector2f p)
 	text.setPosition(p);
 }
 
-string InputField::getValue()
+float InputField::getValue()
 {
-	return value;
+	return stof(value);
 }

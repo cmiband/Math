@@ -11,15 +11,15 @@
 
 using namespace std;
 
+enum class figures {
+	POINT,
+	LINE,
+	CIRCLE
+};
+
 class Application
 {
 private:
-	enum class figures {
-		POINT,
-		LINE,
-		CIRCLE
-	};
-
 	const sf::Color bgColor = sf::Color(192, 192, 192);
 	sf::Image coordsImage;
 	sf::Texture coordsTexture;

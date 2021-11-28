@@ -29,6 +29,6 @@ public:
 	void reset();
 	void setPos(sf::Vector2f p);
 
-	string getValue();
+	float getValue();
 };
 
