@@ -32,7 +32,6 @@ int Application::Run()
 
 	float a = 0, b = 0;
 
-	bool circSelect = false;
 	bool drawPoint = false, drawLine = false, drawCircle = false;
 	bool submitBool = false;
 	while (window.isOpen()) {
@@ -52,7 +51,6 @@ int Application::Run()
 
 		switch (fig) {
 		case figures::POINT: {
-			circSelect = false;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -63,7 +61,6 @@ int Application::Run()
 		} break;
 
 		case figures::LINE: {
-			circSelect = false;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -74,7 +71,6 @@ int Application::Run()
 		} break;
 			
 		case figures::CIRCLE: {
-			circSelect = true;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -96,14 +92,23 @@ int Application::Run()
 		
 		aParam.drawOnScreen(&window); 
 		bParam.drawOnScreen(&window);
-		if (circSelect)
+		if (fig == figures::POINT) {
+			aParam.setLabel("X: ");
+			bParam.setLabel("Y: ");
+		}
+		else {
+			aParam.setLabel("a: ");
+			bParam.setLabel("b: ");
+		}
+		if (fig == figures::CIRCLE)
 			cradius.drawOnScreen(&window);
 		aParam.update(event, window); 
 		bParam.update(event, window); 
 		cradius.update(event, window);
 
 		if (drawPoint) {
-
+			point = new Point(a, b);
+			point->drawOnScreen(&window);
 		}
 		if (drawLine) {
 			line = new DirectLine(-5.0f, a, b);
