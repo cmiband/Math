@@ -21,13 +21,14 @@ private:
 	sf::RectangleShape field;
 
 public:
-	InputField(sf::Font f, sf::Vector2f p, float w, float h, string l);
+	InputField(sf::Font f, sf::Vector2f p, float w, float h, string l, float lOffset);
 	~InputField() {};
 
 	virtual void drawOnScreen(sf::RenderWindow* w);
 	void update(sf::Event &ev, sf::RenderWindow &w);
 	void reset();
 	void setPos(sf::Vector2f p);
+	void setLabel(string val);
 
 	float getValue();
 };

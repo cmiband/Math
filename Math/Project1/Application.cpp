@@ -22,8 +22,9 @@ int Application::Run()
 	Button chooseLine("Line", sf::Vector2f(310.0f, 440.0f), font, 80.0f, 40.0f);
 	Button submit("Submit", sf::Vector2f(550.0f, 400.0f), font, 100.0f, 40.0f);
 
-	InputField aParam(font, sf::Vector2f(500.0f, 50.0f), 80.0f, 40.0f, "a: ");
-	InputField bParam(font, sf::Vector2f(500.0f, 120.0f), 80.0f, 40.0f, "b: ");
+	InputField aParam(font, sf::Vector2f(500.0f, 50.0f), 80.0f, 40.0f, "a: ",30.0f);
+	InputField bParam(font, sf::Vector2f(500.0f, 120.0f), 80.0f, 40.0f, "b: ", 30.0f);
+	InputField cradius(font, sf::Vector2f(500.0f, 190.0f), 80.0f, 40.0f, "radius: ", 80.0f);
 
 	DirectLine* line;
 	Point* point;
@@ -31,6 +32,7 @@ int Application::Run()
 
 	float a = 0, b = 0;
 
+	bool circSelect = false;
 	bool drawPoint = false, drawLine = false, drawCircle = false;
 	bool submitBool = false;
 	while (window.isOpen()) {
@@ -50,6 +52,7 @@ int Application::Run()
 
 		switch (fig) {
 		case figures::POINT: {
+			circSelect = false;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -60,6 +63,7 @@ int Application::Run()
 		} break;
 
 		case figures::LINE: {
+			circSelect = false;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -70,6 +74,7 @@ int Application::Run()
 		} break;
 			
 		case figures::CIRCLE: {
+			circSelect = true;
 			if (submitBool) {
 				a = aParam.getValue();
 				b = bParam.getValue();
@@ -84,9 +89,18 @@ int Application::Run()
 
 		window.draw(coordsRect);
 
-		choosePoint.drawOnScreen(&window); chooseCircle.drawOnScreen(&window); chooseLine.drawOnScreen(&window); submit.drawOnScreen(&window);
-		aParam.drawOnScreen(&window); bParam.drawOnScreen(&window);
-		aParam.update(event, window); bParam.update(event, window);
+		choosePoint.drawOnScreen(&window); 
+		chooseCircle.drawOnScreen(&window);
+		chooseLine.drawOnScreen(&window); 
+		submit.drawOnScreen(&window);
+		
+		aParam.drawOnScreen(&window); 
+		bParam.drawOnScreen(&window);
+		if (circSelect)
+			cradius.drawOnScreen(&window);
+		aParam.update(event, window); 
+		bParam.update(event, window); 
+		cradius.update(event, window);
 
 		if (drawPoint) {
 

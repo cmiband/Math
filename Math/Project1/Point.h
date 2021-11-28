@@ -14,9 +14,6 @@ public:
 	Point(float x, float y);
 	~Point() {};
 
-	sf::Vector2f getPosition();
-	void setPosition(float x, float y);
-	sf::CircleShape getShape();
 	virtual void drawOnScreen(sf::RenderWindow* w);
 };
 
