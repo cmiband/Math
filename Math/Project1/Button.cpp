@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(string t, sf::Vector2f p, sf::Font f, float w, float h) : valText(t), font(f), buttonWidth(w), buttonHeight(h)
+Button::Button(string t, sf::Vector2f p, sf::Font f, float w, float h, float of) : valText(t), font(f), buttonWidth(w), buttonHeight(h), leftOffset(of)
 {
 	button = sf::RectangleShape(sf::Vector2f(buttonWidth, buttonHeight));
 	button.setFillColor(sf::Color::White);
@@ -9,7 +9,7 @@ Button::Button(string t, sf::Vector2f p, sf::Font f, float w, float h) : valText
 	text.setFont(font);
 	text.setString(valText);
 	text.setFillColor(color);
-	text.setPosition(sf::Vector2f(p.x+buttonWidth/6, p.y));
+	text.setPosition(sf::Vector2f(p.x+leftOffset, p.y));
 }
 
 bool Button::checkClick(sf::RenderWindow &w)
